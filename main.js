@@ -17,7 +17,7 @@ const personaProto = {
 const estudianteProto = Object.create(personaProto);
 
 estudianteProto.estudiar = function() {
-  return `Soy ${this.nombre}, tengo ${this.edad} años y estoy estudiado en la ${this.escuela}`
+  return `Soy ${this.nombre}, tengo ${this.edad} años y estoy estudiado en ${this.escuela}`
 }
 estudianteProto.dormir = function () {
   return `Soy ${this.nombre} y estoy durmiendo.`
@@ -27,7 +27,7 @@ estudianteProto.dormir = function () {
 const profesorProto = Object.create(personaProto);
 
 profesorProto.ensenar = function () {
-  return `Soy ${this.carrera} y enseño en el la ${this.escuela}`
+  return `Soy ${this.carrera} y enseño en ${this.escuela}`
 }
 
 profesorProto.calificar = function () {
@@ -44,21 +44,35 @@ function EstudianteConstructor (nombre, edad, escuela) {
 }
 EstudianteConstructor.prototype = estudianteProto;
 
-const estudiante = new EstudianteConstructor('Lisa', 20, 'UCR')
+const estudianteLisa = new EstudianteConstructor('Lisa', 20, 'la UCR')
 
-console.log(estudiante);
+console.log(estudianteLisa);
 console.log(`
------- Estudiante ------
+------ Estudiante Lisa ------
 
-- ${estudiante.caminar()}
-- ${estudiante.saludar()}
-- ${estudiante.comer()}
-- ${estudiante.estudiar()}
-- ${estudiante.dormir()}
+- ${estudianteLisa.caminar()}
+- ${estudianteLisa.saludar()}
+- ${estudianteLisa.comer()}
+- ${estudianteLisa.estudiar()}
+- ${estudianteLisa.dormir()}
 `);
 
 
-// Profesor
+const estudianteSergio = new EstudianteConstructor('Sergio', 19, 'el TEC')
+
+console.log(estudianteSergio);
+console.log(`
+------ Estudiante Sergio ------
+
+- ${estudianteSergio.caminar()}
+- ${estudianteSergio.saludar()}
+- ${estudianteSergio.comer()}
+- ${estudianteSergio.estudiar()}
+- ${estudianteSergio.dormir()}
+`);
+
+
+// Profesores
 function ProfesorContructor (nombre, carrera, escuela) {
   this.nombre = nombre;
   this.carrera = carrera;
@@ -66,16 +80,29 @@ function ProfesorContructor (nombre, carrera, escuela) {
 }
 ProfesorContructor.prototype = profesorProto;
 
-const profesor = new ProfesorContructor('John', 'Ingeniero', 'UCR')
+const profesorJohn = new ProfesorContructor('John', 'Ingeniero', 'la UCR')
 
-console.log(profesor);
+
+console.log(profesorJohn);
 console.log(`
------- Profesor ------
+------ Profesor John ------
 
-- ${profesor.caminar()}
-- ${profesor.saludar()}
-- ${profesor.comer()}
-- ${profesor.ensenar()}
-- ${profesor.calificar()}
+- ${profesorJohn.caminar()}
+- ${profesorJohn.saludar()}
+- ${profesorJohn.comer()}
+- ${profesorJohn.ensenar()}
+- ${profesorJohn.calificar()}
 `);
 
+const profesorCarlos = new ProfesorContructor('Carlos', 'Físico Matemático', 'el TEC')
+
+console.log(profesorCarlos);
+console.log(`
+------ Profesor Carlos ------
+
+- ${profesorCarlos.caminar()}
+- ${profesorCarlos.saludar()}
+- ${profesorCarlos.comer()}
+- ${profesorCarlos.ensenar()}
+- ${profesorCarlos.calificar()}
+`);
